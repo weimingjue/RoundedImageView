@@ -1,0 +1,24 @@
+*.iml
+*.bat
+*.zip
+local.properties
+*.hprof
+/captures
+~$*
+gradlew
+.DS_Store
+.gradle
+build
+/*/build
+proguardMapping.txt
+
+#.idea相关
+/.idea
+.externalNativeBuild
+.cxx
+
+# 安装包
+/debug
+/release
+/*/debug
+/*/release
