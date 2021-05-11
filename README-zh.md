@@ -1,6 +1,4 @@
-# Lightweight and fast  RoundedImageView
-
-### [中文文档](README-zh.md)
+# 轻量又快速的RoundImageView
 
 ```
         <com.wang.round.RoundedImageView
@@ -19,26 +17,25 @@
 
 ![img](example.png "img")
 
-#### All attributes:
+#### 全部属性：
 
 cornerRadius、cornerTopLeftRadius、cornerTopRightRadius、cornerBottomLeftRadius、cornerBottomRightRadius、oval
 
 borderWidth、borderColor
 
-### Support
+### 支持情况
 
-- Support rounded corners, four different rounded corners, oval, and border
+- 支持圆角、四边不同圆角、椭圆和边框
 
-- Support xml preview
+- 支持xml预览
 
-- All ImageView images are supported, such as: glide load gif images
+- 所有ImageView所支持的图像均支持，如：glide加载gif图
 
-- All ImageView properties are available and are exactly the same (except setCropToPadding), such as
-  adjustViewBounds、scaleType、padding
+- 所有ImageView的属性均可用，并且完全一致（setCropToPadding除外），如adjustViewBounds、scaleType、padding
 
-### Gradle
+### Gradle导入
 
-Your build.gradle must have jitpack.io, like：
+你的build.gradle必须有jitpack.io，像这样：
 
 ```
 allprojects {
@@ -50,5 +47,6 @@ allprojects {
 }
 ```
 
-then：
-`api or implementation 'com.github.weimingjue:RoundedImageView:0.9.1'`
+然后：
+`api或implementation 'com.github.weimingjue:RoundedImageView:0.9.1'`
+

@@ -5,7 +5,6 @@ local.properties
 *.hprof
 /captures
 ~$*
-gradlew
 .DS_Store
 .gradle
 build

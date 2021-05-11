@@ -20,29 +20,11 @@ android {
         jvmTarget = '1.8'
     }
     compileOptions {
-        kotlinOptions.freeCompilerArgs += ['-module-name', getThreePackage()]
+        kotlinOptions.freeCompilerArgs += ['-module-name', "com.wang.round"]
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.2.0'
-}
-
-/**
- * 获取模块3级包名，如：com.wang.widget
- */
-String getThreePackage() {
-    try {
-        def javaFile = new File(projectDir, "src\\main\\java")
-        if (javaFile.exists()) {
-            def child = javaFile.listFiles()[0].listFiles()[0].listFiles()[0]
-            //先删掉前段路径，然后转为.
-            return child.absolutePath.substring(javaFile.absolutePath.length() + 1)
-                    .replace("/", ".").replace("\\", ".")
-        }
-    } catch (e) {
-        e.printStackTrace()
-    }
-    throw new RuntimeException("没有找到3级包名")
 }
