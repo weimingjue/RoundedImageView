@@ -13,7 +13,7 @@ import kotlin.math.max
 /**
  * 圆角view
  */
-class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
     AppCompatImageView(context, attrs, defStyleAttr) {
     private var radii: FloatArray? = null
     private val radiusPath = Path()
@@ -42,8 +42,14 @@ class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int
                 R.styleable.RoundedImageView_cornerBottomRightRadius,
                 radius
             )
-            setCornerRadius(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius)
-            setIsOval(a.getBoolean(R.styleable.RoundedImageView_oval, isOval))
+            setCornerRadiusPrivate(
+                topLeftRadius,
+                topRightRadius,
+                bottomLeftRadius,
+                bottomRightRadius,
+                false
+            )
+            isOval = a.getBoolean(R.styleable.RoundedImageView_oval, isOval)
             setBorderWidth(a.getDimensionPixelSize(R.styleable.RoundedImageView_borderWidth, 0))
             setBorderColor(a.getColor(R.styleable.RoundedImageView_borderColor, 0))
 
@@ -60,12 +66,50 @@ class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        if (w != oldw || h != oldh) {
+        if (w != oldw || h != oldh) {//init完第一次layout时也会走一遍
             newRadiusBorderPath()
         }
     }
 
-    private fun newRadiusBorderPath() {
+    private fun setCornerRadiusPrivate(
+        @Px @IntRange(from = 0) topLeft: Int,
+        @Px @IntRange(from = 0) topRight: Int,
+        @Px @IntRange(from = 0) bottomLeft: Int,
+        @Px @IntRange(from = 0) bottomRight: Int,
+        isInvalidate: Boolean
+    ) {
+        if ((topLeft <= 0) and (topRight <= 0) and (bottomLeft <= 0) and (bottomRight <= 0)) {
+            radii = null
+        } else {
+            if (radii == null) {
+                radii = FloatArray(8)
+            }
+            radii?.run {
+                if ((this[0] == topLeft.toFloat()) and (this[2] == topRight.toFloat()) and
+                    (this[4] == bottomLeft.toFloat()) and (this[6] == bottomRight.toFloat())
+                ) {
+                    return
+                }
+                this[0] = topLeft.toFloat()
+                this[1] = this[0]
+                this[2] = topRight.toFloat()
+                this[3] = this[2]
+                this[4] = bottomRight.toFloat()
+                this[5] = this[4]
+                this[6] = bottomLeft.toFloat()
+                this[7] = this[6]
+            }
+        }
+        if (isInvalidate) {
+            newRadiusBorderPath()
+            invalidate()
+        }
+    }
+
+    /**
+     * 重新计算圆角及path
+     */
+    protected open fun newRadiusBorderPath() {
         if (width == 0 || height == 0) {
             return
         }
@@ -201,30 +245,7 @@ class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int
         @Px @IntRange(from = 0) bottomLeft: Int,
         @Px @IntRange(from = 0) bottomRight: Int
     ) {
-        if ((topLeft <= 0) and (topRight <= 0) and (bottomLeft <= 0) and (bottomRight <= 0)) {
-            radii = null
-        } else {
-            if (radii == null) {
-                radii = FloatArray(8)
-            }
-            radii?.run {
-                if ((this[0] == topLeft.toFloat()) and (this[2] == topRight.toFloat()) and
-                    (this[4] == bottomLeft.toFloat()) and (this[6] == bottomRight.toFloat())
-                ) {
-                    return
-                }
-                this[0] = topLeft.toFloat()
-                this[1] = this[0]
-                this[2] = topRight.toFloat()
-                this[3] = this[2]
-                this[4] = bottomRight.toFloat()
-                this[5] = this[4]
-                this[6] = bottomLeft.toFloat()
-                this[7] = this[6]
-            }
-        }
-        newRadiusBorderPath()
-        invalidate()
+        setCornerRadiusPrivate(topLeft, topRight, bottomLeft, bottomRight, true)
     }
 
     /**
