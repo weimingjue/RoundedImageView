@@ -1,7 +1,12 @@
 package com.wang.round
 
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.RectF
 import android.os.Build
 import android.util.AttributeSet
 import androidx.annotation.ColorInt
@@ -13,7 +18,7 @@ import kotlin.math.max
 /**
  * 圆角view
  */
-open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
+open class RoundedImageView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
     AppCompatImageView(context, attrs, defStyleAttr) {
     private var radii: FloatArray? = null
     private val radiusPath = Path()
@@ -22,9 +27,6 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
     private val borderPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     private var isOval: Boolean = false
-
-    constructor(context: Context) : this(context, null, 0)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
 
     init {
         if (attrs != null) {
@@ -42,13 +44,7 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
                 R.styleable.RoundedImageView_cornerBottomRightRadius,
                 radius
             )
-            setCornerRadiusPrivate(
-                topLeftRadius,
-                topRightRadius,
-                bottomLeftRadius,
-                bottomRightRadius,
-                false
-            )
+            setCornerRadiusPrivate(topLeftRadius, topRightRadius, bottomLeftRadius, bottomRightRadius, false)
             isOval = a.getBoolean(R.styleable.RoundedImageView_oval, isOval)
             setBorderWidth(a.getDimensionPixelSize(R.styleable.RoundedImageView_borderWidth, 0))
             setBorderColor(a.getColor(R.styleable.RoundedImageView_borderColor, 0))
@@ -114,22 +110,18 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
             return
         }
 
-        val stroke2 = borderPaint.strokeWidth / 2
-        val pStart =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) paddingStart else paddingLeft
-        val pEnd =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) paddingEnd else paddingRight
+        val stroke2 = (borderPaint.strokeWidth + 1) / 2
 
         if (isOval) {//椭圆效果
-            val rx = (width - pStart - pEnd) / 2f
+            val rx = (width - paddingStart - paddingEnd) / 2f
             val ry = (height - paddingTop - paddingBottom) / 2f
 
             radiusPath.reset()
             radiusPath.addRoundRect(
                 RectF(
-                    pStart.toFloat(),
+                    paddingStart.toFloat(),
                     paddingTop.toFloat(),
-                    width - pEnd.toFloat(),
+                    width - paddingEnd.toFloat(),
                     height - paddingBottom.toFloat()
                 ),
                 rx,
@@ -140,10 +132,10 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
             borderPath.reset()
             borderPath.addRoundRect(
                 RectF(
-                    pStart + stroke2 - 1,
-                    paddingTop + stroke2 - 1,
-                    width - pEnd - stroke2 + 1,
-                    height - paddingBottom - stroke2 + 1
+                    paddingStart + stroke2,
+                    paddingTop + stroke2,
+                    width - paddingEnd - stroke2,
+                    height - paddingBottom - stroke2
                 ),
                 if (rx - stroke2 < 0) 0f else (rx - stroke2),
                 if (ry - stroke2 < 0) 0f else (ry - stroke2),
@@ -154,9 +146,9 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
                 radiusPath.reset()
                 radiusPath.addRoundRect(
                     RectF(
-                        pStart.toFloat(),
+                        paddingStart.toFloat(),
                         paddingTop.toFloat(),
-                        width - pEnd.toFloat(),
+                        width - paddingEnd.toFloat(),
                         height - paddingBottom.toFloat()
                     ),
                     this,
@@ -170,10 +162,10 @@ open class RoundedImageView(context: Context, attrs: AttributeSet?, defStyleAttr
                 val bottomRight = if (this[6] - stroke2 < 0) 0f else (this[6] - stroke2)
                 borderPath.addRoundRect(
                     RectF(
-                        pStart + stroke2 - 1,
-                        paddingTop + stroke2 - 1,
-                        width - pEnd - stroke2 + 1,
-                        height - paddingBottom - stroke2 + 1
+                        paddingStart + stroke2,
+                        paddingTop + stroke2,
+                        width - paddingEnd - stroke2,
+                        height - paddingBottom - stroke2
                     ),
                     floatArrayOf(
                         topLeft,
