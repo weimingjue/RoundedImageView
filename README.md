@@ -1,5 +1,8 @@
 # Lightweight and fast  RoundedImageView
 
+Completely based on ImageView, although a single draw operation may not be the fastest,
+it avoids unnecessary redraws. Overall, it remains quite efficient.
+
 ### [中文文档](README-zh.md)
 
 ```
@@ -51,4 +54,4 @@ allprojects {
 ```
 
 then：
-`api or implementation 'com.github.weimingjue:RoundedImageView:0.9.1'`
+`api or implementation 'com.github.weimingjue:RoundedImageView:0.9.2'`

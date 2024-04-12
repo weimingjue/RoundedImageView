@@ -1,5 +1,7 @@
 # 轻量又快速的RoundImageView
 
+完全基于ImageView，虽然单次draw不是最快的，但是它不会无缘无故的重新执行draw，所以综合来说它很依然很快
+
 ```
         <com.wang.round.RoundedImageView
             android:id="@+id/riv"
@@ -48,5 +50,5 @@ allprojects {
 ```
 
 然后：
-`api或implementation 'com.github.weimingjue:RoundedImageView:0.9.1'`
+`api或implementation 'com.github.weimingjue:RoundedImageView:0.9.2'`
 
