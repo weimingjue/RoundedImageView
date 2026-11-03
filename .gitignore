@@ -1,23 +1,19 @@
 *.iml
-*.bat
-*.zip
-local.properties
+# studio临时存储的手机当前内存信息
 *.hprof
-/captures
-~$*
-.DS_Store
 .gradle
-build
-/*/build
-proguardMapping.txt
-
-#.idea相关
+.kotlin
 /.idea
+# 这些文件仍需要手动添加一次
+!/.idea/inspectionProfiles/
+!/.idea/encodings.xml
+# 代码样式现默认为系统级，需要修改为项目级，见Settings/Editor/Spelling
+!/.idea/codeStyles/
+# 字典现默认为系统级，需要修改为项目级，见Settings/Editor/Spelling
+!/.idea/dictionaries
+.DS_Store
+build
+/captures
 .externalNativeBuild
 .cxx
-
-# 安装包
-/debug
-/release
-/*/debug
-/*/release
+local.properties

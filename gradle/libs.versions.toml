@@ -1,0 +1,27 @@
+[versions]
+agp = "8.8.0"
+appcompat = "1.7.1"
+androidXCore = "1.13.1"
+constraintlayout = "2.2.1"
+glide = "4.16.0"
+kotlin = "2.2.21"
+
+
+# 项目基本版本相关配置
+compileSdk = "37"
+minSdk = "28"
+targetSdk = "37"
+versionCode = "1"
+versionName = "0.0.1"
+
+[libraries]
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidXCore" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
