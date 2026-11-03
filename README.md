@@ -56,4 +56,6 @@ allprojects {
 ```
 
 then：
-`api or implementation 'com.github.weimingjue:RoundedImageView:0.9.2'`
+`api or implementation 'com.github.weimingjue:RoundedImageView:1.0.3'`
+
+Breaking Change: Prefix all XML attributes with 'riv' for quick autocompletion and namespace isolation.

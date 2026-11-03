@@ -52,5 +52,6 @@ allprojects {
 ```
 
 然后：
-`api或implementation 'com.github.weimingjue:RoundedImageView:0.9.2'`
+`api或implementation 'com.github.weimingjue:RoundedImageView:1.0.3'`
 
+破坏性变更：所有XML属性新增riv前缀，以提供快速补全与命名空间隔离
