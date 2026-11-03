@@ -8,9 +8,9 @@ kotlin = "2.2.21"
 
 
 # 项目基本版本相关配置
-compileSdk = "37"
+compileSdk = "35"
 minSdk = "21"
-targetSdk = "37"
+targetSdk = "35"
 versionCode = "1"
 versionName = "0.0.1"
 
