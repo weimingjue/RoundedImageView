@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    `maven-publish`
 }
 
 android {
@@ -29,6 +30,26 @@ android {
     buildFeatures {
         viewBinding = false
         buildConfig = true
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+}
+
+afterEvaluate {
+    extensions.configure<PublishingExtension> {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+
+                groupId = "com.github.weimingjue"
+                artifactId = "RoundedImageView"
+                version = "1.0.1"
+            }
+        }
     }
 }
 
