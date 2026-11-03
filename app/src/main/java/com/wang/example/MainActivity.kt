@@ -7,6 +7,7 @@ import android.os.Message
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.wang.round.IRoundedView.Companion.setCornerRadius
 import com.wang.round.RoundedImageView
 
 class MainActivity : AppCompatActivity() {
@@ -26,32 +27,37 @@ class MainActivity : AppCompatActivity() {
                         1 -> {
                             setCornerRadius(60)
                         }
+
                         2 -> {
                             setCornerRadius(150, 150, 60, 150)
                             setBorderWidth(9)
                             setBorderColor(0xff0000ff.toInt())
                         }
+
                         3 -> {
                             setCornerRadius(10000)
                             setBorderWidth(0)
                         }
+
                         4 -> {
-                            setIsOval(true)
+                            isOval = true
                             setBorderWidth(9)
                             setBorderColor(0xff0000ff.toInt())
                         }
+
                         5 -> {
                             Glide.with(this)
                                 .asGif()
                                 .load(R.drawable.gif_test)
                                 .into(this)
                         }
+
                         else -> {
                         }
                     }
                 }
                 if (msg.what < 5) {
-                    sendEmptyMessageDelayed(msg.what + 1, 2000);
+                    sendEmptyMessageDelayed(msg.what + 1, 2000)
                 }
             }
         }.sendEmptyMessageDelayed(1, 2000)

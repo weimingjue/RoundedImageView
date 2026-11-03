@@ -2,6 +2,8 @@
 
 完全基于ImageView，虽然单次draw不是最快的，但是它不会无缘无故的重新执行draw，所以综合来说它很依然很快
 
+新增：常规圆角或Android13+将自动开启ViewOutlineProvider，以实现极致的绘制性能
+
 ```
         <com.wang.round.RoundedImageView
             android:id="@+id/riv"
@@ -12,18 +14,18 @@
             android:padding="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ttt3"
-            app:borderColor="#f0f"
-            app:borderWidth="10dp"
-            app:cornerRadius="50dp" />
+            app:rivBorderColor="#f0f"
+            app:rivBorderWidth="10dp"
+            app:rivCornerRadius="50dp" />
 ```
 
 ![img](example.png "img")
 
 #### 全部属性：
 
-cornerRadius、cornerTopLeftRadius、cornerTopRightRadius、cornerBottomLeftRadius、cornerBottomRightRadius、oval
+rivCornerRadius、rivCornerTopLeftRadius、rivCornerTopRightRadius、rivCornerBottomLeftRadius、rivCornerBottomRightRadius、rivOval
 
-borderWidth、borderColor
+rivBorderWidth、rivBorderColor
 
 ### 支持情况
 

@@ -1,13 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="RoundedImageView">
-        <attr name="cornerRadius" format="dimension" />
-        <attr name="cornerTopLeftRadius" format="dimension" />
-        <attr name="cornerTopRightRadius" format="dimension" />
-        <attr name="cornerBottomLeftRadius" format="dimension" />
-        <attr name="cornerBottomRightRadius" format="dimension" />
-        <attr name="oval" format="boolean" />
-        <attr name="borderWidth" format="dimension" />
-        <attr name="borderColor" format="color" />
+        <attr name="rivCornerRadius" />
+        <attr name="rivCornerTopLeftRadius" />
+        <attr name="rivCornerTopRightRadius" />
+        <attr name="rivCornerBottomRightRadius" />
+        <attr name="rivCornerBottomLeftRadius" />
+        <attr name="rivBorderWidth" />
+        <attr name="rivBorderColor" />
+        <attr name="rivOval" />
     </declare-styleable>
+
+    <declare-styleable name="RoundedFrameLayout">
+        <attr name="rivCornerRadius" />
+        <attr name="rivCornerTopLeftRadius" />
+        <attr name="rivCornerTopRightRadius" />
+        <attr name="rivCornerBottomRightRadius" />
+        <attr name="rivCornerBottomLeftRadius" />
+        <attr name="rivBorderWidth" />
+        <attr name="rivBorderColor" />
+        <attr name="rivOval" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedHelper">
+        <attr name="rivCornerRadius" />
+        <attr name="rivCornerTopLeftRadius" />
+        <attr name="rivCornerTopRightRadius" />
+        <attr name="rivCornerBottomRightRadius" />
+        <attr name="rivCornerBottomLeftRadius" />
+        <attr name="rivBorderWidth" />
+        <attr name="rivBorderColor" />
+        <attr name="rivOval" />
+    </declare-styleable>
+    <attr name="rivCornerRadius" format="dimension" />
+    <attr name="rivCornerTopLeftRadius" format="dimension" />
+    <attr name="rivCornerTopRightRadius" format="dimension" />
+    <attr name="rivCornerBottomRightRadius" format="dimension" />
+    <attr name="rivCornerBottomLeftRadius" format="dimension" />
+    <attr name="rivBorderWidth" format="dimension" />
+    <attr name="rivBorderColor" format="color" />
+    <attr name="rivOval" format="boolean" />
 </resources>

@@ -24,7 +24,7 @@
         android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_test"
-        app:cornerRadius="20dp"
+        app:rivCornerRadius="20dp"
         app:layout_constraintLeft_toRightOf="@+id/riv_0"
         app:layout_constraintTop_toTopOf="@+id/riv_0" />
 
@@ -36,10 +36,10 @@
         android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_test"
-        app:borderColor="#00f"
-        app:borderWidth="3dp"
-        app:cornerBottomLeftRadius="20dp"
-        app:cornerRadius="50dp"
+        app:rivBorderColor="#00f"
+        app:rivBorderWidth="3dp"
+        app:rivCornerBottomLeftRadius="20dp"
+        app:rivCornerRadius="50dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/riv_0" />
 
@@ -50,7 +50,7 @@
         android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_test"
-        app:cornerRadius="5000dp"
+        app:rivCornerRadius="5000dp"
         app:layout_constraintLeft_toRightOf="@+id/riv_2"
         app:layout_constraintTop_toTopOf="@+id/riv_2" />
 
@@ -62,11 +62,11 @@
         android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_test"
-        app:borderColor="#00f"
-        app:borderWidth="3dp"
+        app:rivBorderColor="#00f"
+        app:rivBorderWidth="3dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/riv_2"
-        app:oval="true" />
+        app:rivOval="true" />
 
     <com.wang.round.RoundedImageView
         android:layout_width="100dp"
@@ -75,9 +75,9 @@
         android:padding="10dp"
         android:scaleType="centerCrop"
         android:src="@drawable/img_test"
-        app:borderColor="#00f"
-        app:borderWidth="3dp"
+        app:rivBorderColor="#00f"
+        app:rivBorderWidth="3dp"
         app:layout_constraintLeft_toRightOf="@+id/riv_4"
         app:layout_constraintTop_toTopOf="@+id/riv_4"
-        app:oval="true" />
+        app:rivOval="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,8 @@
 Completely based on ImageView, although a single draw operation may not be the fastest,
 it avoids unnecessary redraws. Overall, it remains quite efficient.
 
+New: Standard rounded corners or API 33+ will automatically enable the system's ViewOutlineProvider for optimal performance.
+
 ### [中文文档](README-zh.md)
 
 ```
@@ -15,18 +17,18 @@ it avoids unnecessary redraws. Overall, it remains quite efficient.
             android:padding="20dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ttt3"
-            app:borderColor="#f0f"
-            app:borderWidth="10dp"
-            app:cornerRadius="50dp" />
+            app:rivBorderColor="#f0f"
+            app:rivBorderWidth="10dp"
+            app:rivCornerRadius="50dp" />
 ```
 
 ![img](example.png "img")
 
 #### All attributes:
 
-cornerRadius、cornerTopLeftRadius、cornerTopRightRadius、cornerBottomLeftRadius、cornerBottomRightRadius、oval
+rivCornerRadius、rivCornerTopLeftRadius、rivCornerTopRightRadius、rivCornerBottomLeftRadius、rivCornerBottomRightRadius、rivOval
 
-borderWidth、borderColor
+rivBorderWidth、rivBorderColor
 
 ### Support
 
